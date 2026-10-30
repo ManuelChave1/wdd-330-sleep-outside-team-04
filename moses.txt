@@ -1,0 +1,8 @@
+# WDD 330 Git Branch Practice
+
+Name: Moses Butro Jeremiah
+
+Branch: mbj--branch-test
+
+Purpose: Practice creating a Git branch, committing changes,
+and opening a pull request on GitHub.
