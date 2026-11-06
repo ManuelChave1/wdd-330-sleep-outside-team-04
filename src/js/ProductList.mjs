@@ -1,3 +1,5 @@
+import { renderListWithTemplate } from "./utils.mjs";
+
 function productCardTemplate(product) {
     return `
     <li class="product-card"> 
@@ -19,8 +21,18 @@ export default class ProductList {
     }
     async init() {
         const listOfProduct = await this.dataSource.getData();
+        this.renderList(listOfProduct);
+
     }
-    renderList(){
-        productCardTemplate()
+    renderList(list) {
+        // const clear = null;
+        // if (this.listElement === "") {
+        //     clear = true
+        // }
+        // else {
+        //     clear = false;
+        // }
+
+        renderListWithTemplate(productCardTemplate, this.listElement, list)
     }
 }
