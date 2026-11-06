@@ -29,7 +29,7 @@ function addProductToCart(product) {
 
 
 function renderProductDetails(product) {
-    const mainconteiner = document.querySelector("#main-conteiner")
+    const maincontainer = document.querySelector("#main-container")
     const template = document.querySelector("#myTemplate")
     const clone = template.content.cloneNode(true)
 
@@ -49,6 +49,6 @@ function renderProductDetails(product) {
 
     })
     divBtnAdd.appendChild(btnAddToCart);
-    mainconteiner.appendChild(clone)
+    maincontainer.appendChild(clone)
 
 }
