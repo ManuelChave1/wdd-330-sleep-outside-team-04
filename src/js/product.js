@@ -6,10 +6,6 @@ import { ProductDetails } from "./ProductDetails.mjs";
 // Create a data source for tent products.
 const dataSource = new ProductData("tents");
 const productsID = getParam("product");
-console.log(productsID);
-console.log(dataSource.findProductById(productsID))
-console.log("RUNNED SOCESSUFULLY")
-
 const ProductDetail = new ProductDetails(productsID, dataSource)
 ProductDetail.init()
 
