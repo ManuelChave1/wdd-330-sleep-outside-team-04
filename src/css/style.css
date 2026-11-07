@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -301,6 +301,12 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+.hide {
+  display: none;
+  text-align: right;
+  margin-right: 10px;
 }
 
 /* Adjust shopping cart layout for small screens. */

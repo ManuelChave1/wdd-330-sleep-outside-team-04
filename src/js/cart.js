@@ -9,6 +9,15 @@ function renderCartContents() {
 
   // Display the products on the cart page.
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  //Check if there is anything uploaded on the cart
+
+  if (cartItems.length > 0) {
+    document.querySelector(".hide").style.display = "block";
+    const total = cartItems.reduce((sum, item) => { return sum + item.FinalPrice }, 0)
+    document.querySelector(".cart-total").textContent = `Total Price: ${total}`;
+  }
+
 }
 
 function cartItemTemplate(item) {
