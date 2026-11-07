@@ -225,8 +225,22 @@ button {
   width: 100%;
   padding: 1rem;
   font-size: var(--small-font);
+  position: relative;
 }
-
+.removeFromCart{
+  padding: 0;
+  background-color: transparent;
+  color: red;
+  font-size: 1.3rem;
+  font-weight: bolder;
+  position: absolute;
+  top: 1px;
+  right: 7px;
+}
+li:has(.removeFromCart:hover){
+  outline:2px solid var(--primary-color);
+  border-radius: 5px;
+}
 /* Keep the product image in the first column. */
 .cart-card__image {
   grid-column: 1;
