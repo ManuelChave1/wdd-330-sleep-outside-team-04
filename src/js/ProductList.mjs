@@ -25,13 +25,6 @@ export default class ProductList {
 
     }
     renderList(list) {
-        // const clear = null;
-        // if (this.listElement === "") {
-        //     clear = true
-        // }
-        // else {
-        //     clear = false;
-        // }
 
         renderListWithTemplate(productCardTemplate, this.listElement, list)
     }
