@@ -56,13 +56,19 @@ async function loadTemplate(path) {
 }
 
 export async function loadHeaderFooter() {
-  const headerTemplete = await loadTemplate("/public/partials/header.html")
-  const footerTemplete = await loadTemplate("/public/partials/footer.html")
+  const mainheaderTemplete = await loadTemplate("/public/partials/header.html")
+  const mainfooterTemplete = await loadTemplate("/public/partials/footer.html")
+  const productPageHeaderTemplete = await loadTemplate("/public/partials/productpageheader.html")
+  const productPagefooterTemplete = await loadTemplate("/public/partials/productpagefooter.html")
 
-  const headerHtml = document.querySelector("#header")
-  const footerHtml = document.querySelector("#footer")
+  const mainheaderHtml = document.querySelector("#mainHeader")
+  const mainfooterHtml = document.querySelector("#mainFooter")
+  const productPagesheaderHtml = document.querySelector("#productPagesHeader")
+  const productPagesfooterHtml = document.querySelector("#productPagesFooter")
 
-  renderWithTemplate(headerTemplete, headerHtml)
-  renderWithTemplate(footerTemplete, footerHtml)
+  renderWithTemplate(mainheaderTemplete, mainheaderHtml)
+  renderWithTemplate(mainfooterTemplete, mainfooterHtml)
+  renderWithTemplate(productPageHeaderTemplete, productPagesheaderHtml)
+  renderWithTemplate(productPagefooterTemplete, productPagesfooterHtml)
 
 }
