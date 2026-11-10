@@ -41,3 +41,28 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   }
 
 }
+
+function renderWithTemplate(templateFn, parentElement, data, callback) {
+  parentElement.innerHTML = templateFn
+  if (callback) {
+    callback(data)
+  }
+}
+
+async function loadTemplate(path) {
+  const response = await fetch(path)
+  const data = await response.text()
+  return data;
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplete = await loadTemplate("/public/partials/header.html")
+  const footerTemplete = await loadTemplate("/public/partials/footer.html")
+
+  const headerHtml = document.querySelector("#header")
+  const footerHtml = document.querySelector("#footer")
+
+  renderWithTemplate(headerTemplete, headerHtml)
+  renderWithTemplate(footerTemplete, footerHtml)
+
+}
