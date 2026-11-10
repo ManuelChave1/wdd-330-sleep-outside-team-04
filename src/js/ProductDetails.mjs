@@ -16,13 +16,21 @@ export class ProductDetails {
     }
 }
 
-function addProductToCart(product) {
+export function addProductToCart(product) {
     // Retrieve existing cart items or start with an empty array.
     const cartItems = getLocalStorage("so-cart") || [];
 
-    // Add the selected product without removing existing items.
-    cartItems.push(product);
+    const existingProduct = cartItems.find((item) => item.Id === product.Id);
 
+
+    // Add the selected product without removing existing items.
+    if (existingProduct) {
+        existingProduct.quantity++;
+    }
+    else{
+        product.quantity = 1;
+        cartItems.push(product);
+    }
     // Save the updated cart array to localStorage.
     setLocalStorage("so-cart", cartItems);
 }
