@@ -22,15 +22,18 @@ function productCardTemplate(product) {
     <h2 class="card__name">${product.NameWithoutBrand}</h2>
     <p class="product-card__price">$${finalPrice.toFixed(2)}</p>
     ${hasDiscount
-        ? `
+            ? `
             <p class="product-card__original-price">
                 Original: $${retailPrice.toFixed(2)}
+            </p>
+              <p class="product-card__price">
+                You save: $${retailPrice.toFixed(0) - finalPrice.toFixed(0)}
             </p>
             <span class="product-card__discount">
                 ${discountPercentage}% OFF
             </span>
         `
-        : ""}
+            : ""}
     </a>
     </li>
     `
