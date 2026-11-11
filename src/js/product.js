@@ -1,5 +1,5 @@
 import ProductData from "./ProductData.mjs";
-import { getParam } from "./utils.mjs";
+import { getParam,loadHeaderFooter } from "./utils.mjs";
 import { ProductDetails } from "./ProductDetails.mjs";
 
 
@@ -8,7 +8,7 @@ const dataSource = new ProductData("tents");
 const productsID = getParam("product");
 const ProductDetail = new ProductDetails(productsID, dataSource)
 ProductDetail.init()
-
+loadHeaderFooter();
 
 
 // async function addToCartHandler(e) {
