@@ -2,7 +2,6 @@ import ProductData from "./ProductData.mjs";
 import { getParam,loadHeaderFooter } from "./utils.mjs";
 import { ProductDetails } from "./ProductDetails.mjs";
 
-
 // Create a data source for tent products.
 const dataSource = new ProductData("tents");
 const productsID = getParam("product");

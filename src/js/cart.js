@@ -15,10 +15,9 @@ function renderCartContents() {
 
   if (cartItems.length > 0) {
     document.querySelector(".hide").style.display = "block";
-    const total = cartItems.reduce((sum, item) => sum + Number(item.FinalPrice) , 0)
+    const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
     document.querySelector(".cart-total").textContent = `Total Price: ${total}`;
   }
-
 }
 
 function cartItemTemplate(item,index) {

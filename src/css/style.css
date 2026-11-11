@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -184,6 +184,25 @@ button {
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
+}
+
+/* Original retail price for discounted products */
+.product-card__original-price {
+  color: #666;
+  font-size: 0.85rem;
+  text-decoration: line-through;
+}
+
+/* Discount percentage indicator */
+.product-card__discount {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin-top: 0.25rem;
+  background-color: #176b37;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 4px;
 }
 
 .product-card h2,
