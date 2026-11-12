@@ -1,5 +1,6 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage,loadHeaderFooter } from "./utils.mjs";
 
+loadHeaderFooter();
 function renderCartContents() {
   // Get saved cart items or use an empty array.
   const cartItems = getLocalStorage("so-cart") || [];
