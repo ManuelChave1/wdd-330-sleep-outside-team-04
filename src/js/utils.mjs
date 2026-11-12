@@ -11,9 +11,7 @@ export function getLocalStorage(key) {
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
-  const existingData = getLocalStorage(key);
-  existingData.push(data)
-  localStorage.setItem(key, JSON.stringify(existingData));
+  localStorage.setItem(key, JSON.stringify(data));
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
@@ -37,37 +35,30 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   if (clear === false) {
     parentElement.insertAdjacentHTML(position, HTMLString.join(""))
 
-  } else {
-    parentElement.innerHTML = ""
-    parentElement.insertAdjacentHTML(position, HTMLString.join(""))
   }
 
 }
 
 export function renderWithTemplate(templateFn, parentElement, data, callback) {
   parentElement.innerHTML = templateFn;
-  if(callback){
+  if (callback) {
     callback(data);
-  }    
+  }
 }
 
-export async function loadTemplate(path){
-    const response = await fetch(path);
-    const template = await response.text();
-    return template;
+export async function loadTemplate(path) {
+  const response = await fetch(path);
+  const template = await response.text();
+  return template;
 }
 
-export async function loadHeaderFooter(){
-  const header =  await loadTemplate("../public/partials/header.html");
-  const footer = await loadTemplate("../public/partials/footer.html");
+export async function loadHeaderFooter() {
+  const header = await loadTemplate("/public/partials/header.html");
+  const footer = await loadTemplate("/public/partials/footer.html");
 
   const headerTemplate = document.getElementById("header");
   const footerTemplate = document.getElementById("footer");
 
-  renderWithTemplate(header,headerTemplate)
-  renderWithTemplate(footer,footerTemplate)
-
-
+  renderWithTemplate(header, headerTemplate)
+  renderWithTemplate(footer, footerTemplate)
 }
-
-
