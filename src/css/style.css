@@ -246,7 +246,7 @@ button {
   font-size: var(--small-font);
   position: relative;
 }
-.removeFromCart{
+.removeFromCart {
   padding: 0;
   background-color: transparent;
   color: red;
@@ -256,8 +256,8 @@ button {
   top: 1px;
   right: 7px;
 }
-li:has(.removeFromCart:hover){
-  outline:2px solid var(--primary-color);
+li:has(.removeFromCart:hover) {
+  outline: 2px solid var(--primary-color);
   border-radius: 5px;
 }
 /* Keep the product image in the first column. */
