@@ -1,4 +1,4 @@
-import { getLocalStorage,loadHeaderFooter } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 function renderCartContents() {
@@ -20,7 +20,7 @@ function renderCartContents() {
   }
 }
 
-function cartItemTemplate(item,index) {
+function cartItemTemplate(item, index) {
   // Convert the saved image path to a root-relative URL.
   // Example: ../images/tents/photo.jpg becomes /images/tents/photo.jpg
   const imagePath = item.Image.replace(/^(\.\.\/)+/, "/");
@@ -61,10 +61,10 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
   //sets the button to any clicked .removefromcart clas
   const button = event.target.closest(".removeFromCart");
   if (!button) return;
-//get the position of the btn 
+  //get the position of the btn 
   const index = Number(button.dataset.index);
   const cartItems = getLocalStorage("so-cart") || [];
-//remove the item in the list using the position of the btn 
+  //remove the item in the list using the position of the btn 
   cartItems.splice(index, 1);
   // set the new cart after removing the delete item
   localStorage.setItem("so-cart", JSON.stringify(cartItems));
