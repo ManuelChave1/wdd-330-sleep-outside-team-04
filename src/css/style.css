@@ -376,3 +376,44 @@ footer {
     text-align: left;
   }
 }
+
+/* Breadcrumb navigation */
+.breadcrumbs {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumbs li+li::before {
+  content: "›";
+  color: #666;
+}
+
+.breadcrumbs a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.breadcrumbs a:hover {
+  color: #a04b16;
+}
+
+.breadcrumbs [aria-current="page"] {
+  font-weight: 600;
+}
