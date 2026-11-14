@@ -25,7 +25,7 @@ function renderCartContents() {
 function cartItemTemplate(item, index) {
   // Convert the saved image path to a root-relative URL.
   // Example: ../images/tents/photo.jpg becomes /images/tents/photo.jpg
-  const imagePath = item.Image.replace(/^(\.\.\/)+/, "/");
+  const imagePath = item.Images.PrimarySmall.replace(/^(\.\.\/)+/, "/");
 
   // Get the product color, with a fallback if unavailable.
   const color = item.Colors?.[0]?.ColorName || "N/A";
