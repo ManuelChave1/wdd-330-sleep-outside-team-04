@@ -3,7 +3,7 @@ import { getParam, loadHeaderFooter } from "./utils.mjs";
 import { ProductDetails } from "./ProductDetails.mjs";
 
 // Create a data source for tent products.
-const dataSource = new ProductData("tents");
+const dataSource = new ProductData();
 const productsID = getParam("product");
 const ProductDetail = new ProductDetails(productsID, dataSource);
 ProductDetail.init();

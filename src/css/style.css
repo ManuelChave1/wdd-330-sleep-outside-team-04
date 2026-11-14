@@ -197,12 +197,13 @@ button {
 .product-card__discount {
   display: inline-block;
   padding: 0.25rem 0.5rem;
-  margin-top: 0.25rem;
+  /* margin-top: 0.25rem; */
   background-color: #176b37;
   color: #fff;
   font-size: 0.8rem;
   font-weight: 700;
   border-radius: 4px;
+  text-align: center;
 }
 
 .product-card h2,
@@ -217,6 +218,14 @@ button {
 
 .card__name {
   font-size: 1em;
+}
+
+.product-card a {
+  display: grid;
+}
+
+.product-card a img {
+  place-self: center;
 }
 
 /* End product list card */
