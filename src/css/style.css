@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -186,6 +186,25 @@ button {
   max-width: 250px;
 }
 
+/* Original retail price for discounted products */
+.product-card__original-price {
+  color: #666;
+  font-size: 0.85rem;
+  text-decoration: line-through;
+}
+
+/* Discount percentage indicator */
+.product-card__discount {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin-top: 0.25rem;
+  background-color: #176b37;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
 .product-card h2,
 .product-card h3,
 .product-card p {
@@ -225,8 +244,22 @@ button {
   width: 100%;
   padding: 1rem;
   font-size: var(--small-font);
+  position: relative;
 }
-
+.removeFromCart {
+  padding: 0;
+  background-color: transparent;
+  color: red;
+  font-size: 1.3rem;
+  font-weight: bolder;
+  position: absolute;
+  top: 1px;
+  right: 7px;
+}
+li:has(.removeFromCart:hover) {
+  outline: 2px solid var(--primary-color);
+  border-radius: 5px;
+}
 /* Keep the product image in the first column. */
 .cart-card__image {
   grid-column: 1;
