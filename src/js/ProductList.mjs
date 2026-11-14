@@ -46,18 +46,11 @@ export default class ProductList {
         this.listElement = listElement;
     }
     async init() {
-        const listOfProduct = await this.dataSource.getData();
+        const listOfProduct = await this.dataSource.getData(this.category);
         this.renderList(listOfProduct);
 
     }
     renderList(list) {
-        // const clear = null;
-        // if (this.listElement === "") {
-        //     clear = true
-        // }
-        // else {
-        //     clear = false;
-        // }
 
         renderListWithTemplate(productCardTemplate, this.listElement, list)
     }
