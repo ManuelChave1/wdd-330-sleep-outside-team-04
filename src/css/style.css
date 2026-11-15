@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -197,12 +197,13 @@ button {
 .product-card__discount {
   display: inline-block;
   padding: 0.25rem 0.5rem;
-  margin-top: 0.25rem;
+  /* margin-top: 0.25rem; */
   background-color: #176b37;
   color: #fff;
   font-size: 0.8rem;
   font-weight: 700;
   border-radius: 4px;
+  text-align: center;
 }
 
 .product-card h2,
@@ -217,6 +218,14 @@ button {
 
 .card__name {
   font-size: 1em;
+}
+
+.product-card a {
+  display: grid;
+}
+
+.product-card a img {
+  place-self: center;
 }
 
 /* End product list card */
@@ -246,6 +255,7 @@ button {
   font-size: var(--small-font);
   position: relative;
 }
+
 .removeFromCart {
   padding: 0;
   background-color: transparent;
@@ -256,10 +266,12 @@ button {
   top: 1px;
   right: 7px;
 }
+
 li:has(.removeFromCart:hover) {
   outline: 2px solid var(--primary-color);
   border-radius: 5px;
 }
+
 /* Keep the product image in the first column. */
 .cart-card__image {
   grid-column: 1;
@@ -340,6 +352,32 @@ footer {
   display: none;
   text-align: right;
   margin-right: 10px;
+}
+
+.product-categories {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+}
+
+.product-categories a {
+  display: grid;
+  padding: 10px;
+  text-decoration: none;
+  color: #666;
+
+}
+
+
+.product-categories a img {
+  width: 80px;
+  height: 70px;
+  place-self: center;
+}
+
+.product-categories p {
+  text-align: center;
 }
 
 /* Adjust shopping cart layout for small screens. */

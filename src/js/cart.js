@@ -18,15 +18,19 @@ function renderCartContents() {
   if (cartItems.length > 0) {
     document.querySelector(".hide").style.display = "block";
     const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
-    document.querySelector(".cart-total").textContent = `Total Price: ${total}`;
+    document.querySelector(".cart-total").textContent = `Total Price: ${total.toFixed(2)}`;
   }
 }
 
 function cartItemTemplate(item, index) {
   // Convert the saved image path to a root-relative URL.
   // Example: ../images/tents/photo.jpg becomes /images/tents/photo.jpg
-  const imagePath = item.Image.replace(/^(\.\.\/)+/, "/");
-
+  const imagePath = (
+    item.Images?.PrimarySmall ||
+    item.Images?.PrimaryLarge ||
+    item.Image ||
+    ""
+  ).replace(/^(\.\.\/)+/, "/");
   // Get the product color, with a fallback if unavailable.
   const color = item.Colors?.[0]?.ColorName || "N/A";
 

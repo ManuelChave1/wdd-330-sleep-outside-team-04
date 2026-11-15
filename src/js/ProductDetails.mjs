@@ -36,7 +36,7 @@ function renderProductDetails(product) {
     clone.querySelector("#brand-name").textContent = product.Brand.Name;
     clone.querySelector("#nameWithoutbrand").textContent = product.NameWithoutBrand;
     const image = clone.querySelector("#image");
-    image.src = product.Image;
+    image.src = product.Images.PrimaryLarge;
     image.alt = product.name;
     clone.querySelector("#product-price").textContent = product.FinalPrice;
     clone.querySelector("#product-color").textContent = product.Colors.ColorName;
