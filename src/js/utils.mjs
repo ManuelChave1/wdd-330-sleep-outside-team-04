@@ -73,3 +73,23 @@ export async function cartCount() {
 
   displayCount.textContent = items.length > 0 ? items.length : "";
 }
+
+export function getDiscountPercentage(product) {
+  const retailPrice = Number(product.SuggestedRetailPrice);
+  const finalPrice = Number(product.FinalPrice);
+
+  const hasDiscount =
+    Number.isFinite(retailPrice) &&
+    Number.isFinite(finalPrice) &&
+    retailPrice > 0 &&
+    finalPrice >= 0 &&
+    finalPrice < retailPrice;
+
+  if (!hasDiscount) {
+    return 0;
+  }
+
+  return Math.round(
+    ((retailPrice - finalPrice) / retailPrice) * 100
+  );
+}
