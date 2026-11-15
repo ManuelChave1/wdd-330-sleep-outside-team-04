@@ -61,4 +61,15 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(header, headerTemplate)
   renderWithTemplate(footer, footerTemplate)
+
+  await cartCount();
+}
+
+
+export async function cartCount() {
+  const items = await getLocalStorage("so-cart");
+
+  const displayCount = document.querySelector(".cartCount");
+
+  displayCount.textContent = items.length > 0 ? items.length : "";
 }

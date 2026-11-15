@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage,cartCount } from "./utils.mjs";
 
 export class ProductDetails {
     constructor(productsID, dataSource) {
@@ -46,6 +46,7 @@ function renderProductDetails(product) {
     btnAddToCart.textContent = "Add to Cart";
     btnAddToCart.addEventListener("click", () => {
         addProductToCart(product)
+        cartCount();
 
     })
     divBtnAdd.appendChild(btnAddToCart);
