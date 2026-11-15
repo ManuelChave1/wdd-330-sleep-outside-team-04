@@ -131,6 +131,16 @@ button {
   fill: gray;
 }
 
+.cartCount{
+  position: absolute;
+  top:5px;
+  right: 0;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  font-size: small;
+  border-radius: 50%;
+  padding: 3px;
+}
 /* End cart icon styles */
 
 .mission {
@@ -379,6 +389,8 @@ footer {
 .product-categories p {
   text-align: center;
 }
+
+
 
 /* Adjust shopping cart layout for small screens. */
 @media screen and (max-width: 499px) {
