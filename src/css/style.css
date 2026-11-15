@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -131,9 +131,9 @@ button {
   fill: gray;
 }
 
-.cartCount{
+.cartCount {
   position: absolute;
-  top:5px;
+  top: 5px;
   right: 0;
   font-weight: bold;
   background-color: var(--primary-color);
@@ -376,9 +376,7 @@ footer {
   padding: 10px;
   text-decoration: none;
   color: #666;
-
 }
-
 
 .product-categories a img {
   width: 80px;
@@ -389,8 +387,6 @@ footer {
 .product-categories p {
   text-align: center;
 }
-
-
 
 /* Adjust shopping cart layout for small screens. */
 @media screen and (max-width: 499px) {

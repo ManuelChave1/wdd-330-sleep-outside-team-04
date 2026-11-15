@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter,cartCount } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, cartCount } from "./utils.mjs";
 
 loadHeaderFooter();
 function renderCartContents() {
@@ -18,7 +18,8 @@ function renderCartContents() {
   if (cartItems.length > 0) {
     document.querySelector(".hide").style.display = "block";
     const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
-    document.querySelector(".cart-total").textContent = `Total Price: ${total.toFixed(2)}`;
+    document.querySelector(".cart-total").textContent =
+      `Total Price: ${total.toFixed(2)}`;
   }
 }
 
