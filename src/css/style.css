@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -141,6 +141,7 @@ button {
   border-radius: 50%;
   padding: 3px;
 }
+
 /* End cart icon styles */
 
 .mission {
@@ -321,16 +322,22 @@ li:has(.removeFromCart:hover) {
 
 /* Position the quantity at the top right. */
 .cart-card__quantity {
-  grid-column: 3;
+  grid-column: 4;
   grid-row: 1;
-  text-align: right;
+  text-align: center;
 }
 
 /* Position the price below the quantity. */
 .cart-card__price {
-  grid-column: 3;
-  grid-row: 2;
-  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid orange;
+  height: 20px;
+  grid-column: 5;
+  grid-row: 1;
+  text-align: center;
+
   font-weight: bold;
 }
 
@@ -386,6 +393,21 @@ footer {
 
 .product-categories p {
   text-align: center;
+}
+
+.cart-cart_qty-infor {
+  display: flex;
+  margin-left: -2em;
+  border: 1px solid yellowgreen;
+}
+
+.cart-cart_qty-infor>button {
+  width: 20px;
+}
+
+.qty-infor {
+  width: 50px;
+
 }
 
 /* Adjust shopping cart layout for small screens. */

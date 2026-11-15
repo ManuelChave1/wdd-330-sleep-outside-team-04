@@ -50,7 +50,11 @@ function cartItemTemplate(item, index) {
       </a>
 
       <p class="cart-card__color">${color}</p>
-      <p class="cart-card__quantity">qty: 1</p>
+      <p class="cart-card__quantity">qty: <br> <br>
+        <span class = "cart-cart_qty-infor">
+        <button>-</button> <span class = "qty-infor">1</span><button>+</button>
+        </span>
+      </p>
       <p class="cart-card__price">
         $${Number(item.FinalPrice).toFixed(2)}
       </p>
