@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage,cartCount } from "./utils.mjs";
 
 export class ProductDetails {
     constructor(productsID, dataSource) {
@@ -44,7 +44,7 @@ function renderProductDetails(product) {
     clone.querySelector("#brand-name").textContent = product.Brand.Name;
     clone.querySelector("#nameWithoutbrand").textContent = product.NameWithoutBrand;
     const image = clone.querySelector("#image");
-    image.src = product.Image;
+    image.src = product.Images.PrimaryLarge;
     image.alt = product.name;
     clone.querySelector("#product-price").textContent = product.FinalPrice;
     clone.querySelector("#product-color").textContent = product.Colors.ColorName;
@@ -54,6 +54,7 @@ function renderProductDetails(product) {
     btnAddToCart.textContent = "Add to Cart";
     btnAddToCart.addEventListener("click", () => {
         addProductToCart(product)
+        cartCount();
 
     })
     divBtnAdd.appendChild(btnAddToCart);
