@@ -17,9 +17,11 @@ function renderCartContents() {
 
   if (cartItems.length > 0) {
     document.querySelector(".hide").style.display = "block";
-    const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+    const total = cartItems.reduce(
+      (sum, item) => sum + Number(item.FinalPrice) * (item.quantity || 1), 0,);
+
     document.querySelector(".cart-total").textContent =
-      `Total Price: ${total.toFixed(2)}`;
+    `Total Price: $${total.toFixed(2)}`;
   }
 }
 
@@ -50,7 +52,7 @@ function cartItemTemplate(item, index) {
       </a>
 
       <p class="cart-card__color">${color}</p>
-      <p class="cart-card__quantity">qty: 1</p>
+      <p class="cart-card__quantity">qty: ${item.quantity}</p>
       <p class="cart-card__price">
         $${Number(item.FinalPrice).toFixed(2)}
       </p>

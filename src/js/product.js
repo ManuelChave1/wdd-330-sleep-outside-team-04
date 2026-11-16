@@ -9,20 +9,20 @@ const ProductDetail = new ProductDetails(productsID, dataSource);
 ProductDetail.init();
 loadHeaderFooter();
 
-// async function addToCartHandler(e) {
+//async function addToCartHandler(e) {
 //   // Get the selected product ID.
-//   const productId = e.currentTarget.dataset.id;
+//  const productId = e.currentTarget.dataset.id;
 
 //   // Find the product using its ID.
-//   const product = await dataSource.findProductById(productId);
+//  const product = await dataSource.findProductById(productId);
 
 //   // Only add the product if it exists.
-//   if (product) {
-//     addProductToCart(product);
-//   }
-// }
+//  if (product) {
+//    addProductToCart(product);
+//  }
+//}
 
 // // add listener to Add to Cart button
-// document
-//   .getElementById("addToCart")
-//   .addEventListener("click", addToCartHandler);
+//document
+//  .getElementById("addToCart")
+//  .addEventListener("click", addToCartHandler);
