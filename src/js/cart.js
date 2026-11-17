@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, cartCount } from "./utils.mjs";
 
 loadHeaderFooter();
 function renderCartContents() {
@@ -17,16 +17,23 @@ function renderCartContents() {
 
   if (cartItems.length > 0) {
     document.querySelector(".hide").style.display = "block";
-    const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
-    document.querySelector(".cart-total").textContent = `Total Price: ${total}`;
+    const total = cartItems.reduce(
+      (sum, item) => sum + Number(item.FinalPrice) * (item.quantity || 1), 0,);
+
+    document.querySelector(".cart-total").textContent =
+    `Total Price: $${total.toFixed(2)}`;
   }
 }
 
 function cartItemTemplate(item, index) {
   // Convert the saved image path to a root-relative URL.
   // Example: ../images/tents/photo.jpg becomes /images/tents/photo.jpg
-  const imagePath = item.Image.replace(/^(\.\.\/)+/, "/");
-
+  const imagePath = (
+    item.Images?.PrimarySmall ||
+    item.Images?.PrimaryLarge ||
+    item.Image ||
+    ""
+  ).replace(/^(\.\.\/)+/, "/");
   // Get the product color, with a fallback if unavailable.
   const color = item.Colors?.[0]?.ColorName || "N/A";
 
@@ -45,7 +52,7 @@ function cartItemTemplate(item, index) {
       </a>
 
       <p class="cart-card__color">${color}</p>
-      <p class="cart-card__quantity">qty: 1</p>
+      <p class="cart-card__quantity">qty: ${item.quantity}</p>
       <p class="cart-card__price">
         $${Number(item.FinalPrice).toFixed(2)}
       </p>
@@ -72,4 +79,5 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
   localStorage.setItem("so-cart", JSON.stringify(cartItems));
   // rerender the cart for fresh results
   renderCartContents();
+  cartCount();
 });
