@@ -21,6 +21,67 @@ function renderCartContents() {
     document.querySelector(".cart-total").textContent =
       `Total Price: ${total.toFixed(2)}`;
   }
+
+  const cartCards = document.querySelectorAll(".cart-card");
+
+  function updateCartTotal() {
+
+    const total = cartItems.reduce((sum, item) => {
+
+      const quantity = item.quantity || 1;
+
+      return sum + (item.FinalPrice * quantity);
+
+    }, 0);
+
+    document.querySelector(".cart-total").textContent = total.toFixed(2);
+  }
+
+  cartCards.forEach((card, index) => {
+
+    const item = cartItems[index];
+
+    let quantity = 1;
+
+    const btnQtydecrease = card.querySelector(".qty-decrease");
+    const btnQtyAdd = card.querySelector(".qty-add");
+    const qtyInfor = card.querySelector(".qty-infor");
+    const priceInfor = card.querySelector(".cart-card__price");
+
+    btnQtyAdd.addEventListener("click", () => {
+
+      quantity++;
+
+      item.quantity = quantity;
+
+      qtyInfor.textContent = quantity;
+
+      priceInfor.textContent = item.FinalPrice.toFixed(2) * quantity;
+      updateCartTotal()
+
+    });
+
+    btnQtydecrease.addEventListener("click", () => {
+
+      if (quantity > 1) {
+
+        quantity--;
+
+        item.quantity = quantity;
+
+        qtyInfor.textContent = quantity;
+
+        priceInfor.textContent = item.FinalPrice.toFixed(2) * quantity;
+        updateCartTotal()
+
+      }
+
+    });
+
+  });
+  updateCartTotal()
+
+
 }
 
 function cartItemTemplate(item, index) {
@@ -50,9 +111,9 @@ function cartItemTemplate(item, index) {
       </a>
 
       <p class="cart-card__color">${color}</p>
-      <p class="cart-card__quantity">qty: <br> <br>
+      <p class="cart-card__quantity">Quantity <br> <br>
         <span class = "cart-cart_qty-infor">
-        <button>-</button> <span class = "qty-infor">1</span><button>+</button>
+        <button class = "qty-decrease">-</button> <span class = "qty-infor">1</span><button class = "qty-add">+</button>
         </span>
       </p>
       <p class="cart-card__price">
@@ -83,3 +144,4 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
   renderCartContents();
   cartCount();
 });
+
