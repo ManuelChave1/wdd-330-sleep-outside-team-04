@@ -13,6 +13,7 @@ export class ProductDetails {
         const product = await this.getProduct()
         renderProductDetails(product)
 
+        return product;
     }
 }
 

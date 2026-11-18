@@ -34,8 +34,10 @@ export function renderBreadcrumbs(items) {
 }
 
 export function renderCategoryBreadcrumbs(category, products) {
-  const categoryName =
-    category.charAt(0).toUpperCase() + category.slice(1);
+  const categoryName = category
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 
   const productCount = products.length;
 
