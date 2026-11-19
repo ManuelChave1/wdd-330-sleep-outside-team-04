@@ -12,19 +12,84 @@
   <link rel="stylesheet" href="../css/style.css" />
   <script type="module" src="../js/main.js"></script>
 </head>
-    <link rel="stylesheet" href="../css/style.css" />
-  </head>
 
 <body>
   <header class="divider" id="header">
     <!-- template -->
   </header>
 
-    <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
-    </main>
+  <main class="divider">
+    <form action="" class="checkout-form">
+      <h1>Checkout </h1>
+      <fieldset class="form-row">
+        <legend>Customer Name</legend>
+
+        <span class="inputField">
+          <label for="firstName">First Name*</label>
+          <input type="text" name="firstName" id="firstName" required>
+        </span>
+
+        <span class="inputField">
+          <label for="lastName">Last Name*</label>
+          <input type="text" name="lastName" id="lastName" required>
+        </span>
+
+      </fieldset>
+
+      <fieldset class="form-row">
+        <legend>Address</legend>
+
+        <span class="inputField">
+
+          <label for="address">Street Address:</label>
+          <input type="text" name="address" id="address" required>
+
+          <label for="city">City:</label>
+          <input type="text" name="city" id="city" required>
+        </span>
+
+        <span class="inputField">
+
+          <label for="state">State:</label>
+          <input type="text" name="state" id="state" required>
+
+          <label for="zipcode">Zip Code:</label>
+          <input type="text" name="zipcode" id="zipcode" required>
+        </span>
+      </fieldset>
+
+      <fieldset class="form-row">
+        <legend>Credit Card Information</legend>
+        <span class="inputField" id="cardrow">
+
+          <label for="cardNumber">Credit Card Number:</label>
+          <input type="text" name="cardNumber" id="cardNumber" required>
+        </span>
+
+        <span class="inputField">
+
+          <label for="expDate">Expiration Date:</label>
+          <input type="text" name="expDate" id="expDate" required>
+        </span>
+        <span class="inputField">
+
+          <label for="securityCode">Security Code</label>
+          <input type="number" name="securityCode" id="securityCode" required>
+        </span>
+
+      </fieldset>
+
+      <div class="costs">
+        <!-- placeholders -->
+        <span>SubTotal: <b id="subTotal">$1233.42</b></span>
+        <span>Tax: <b id="tax"> 65%</b></span>
+        <span>Shipping <b id="shipping">$1234.56</b></span>
+        <span>Total : <b id="total">$98765</b></span>
+      </div>
+
+      <button id="checkoutbtn" type="submit">Proceed to Checkout</button>
+    </form>
+  </main>
 
   <footer id="footer">
     <!-- template -->

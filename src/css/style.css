@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -444,6 +444,11 @@ footer {
   display: none;
   text-align: right;
   margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.hide a {
+  text-decoration: none;
 }
 
 .product-categories {
