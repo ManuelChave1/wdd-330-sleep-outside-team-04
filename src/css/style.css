@@ -141,6 +141,7 @@ button {
   border-radius: 50%;
   padding: 3px;
 }
+
 /* End cart icon styles */
 
 .mission {
@@ -160,6 +161,87 @@ button {
   width: 50%;
   text-align: center;
 }
+
+/* Checkout Form */
+.checkout-form {
+  display: grid;
+  justify-self: center;
+  margin: .3rem 2rem;
+  padding: .5rem;
+  border-radius: 12px;
+  background-color: var(--light-grey);
+  max-width: 800px;
+  min-width: 700px;
+
+  h1 {
+    text-decoration: underline;
+    margin-bottom: .4rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: .3rem;
+    margin: 1rem 0;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  label {
+    font-family: serif;
+    font-size: larger;
+    display: block;
+    font-weight: bold;
+  }
+
+  input {
+    margin-bottom: .5rem;
+    height: 2.2rem;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+  }
+
+  #cardrow {
+    grid-column: 1/-1;
+
+    input {
+      width: 80%;
+    }
+  }
+
+  fieldset {
+    border-radius: 4px;
+    border-width: 1px;
+  }
+
+  legend {
+    margin-bottom: .5rem;
+  }
+
+  .costs {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+
+    b {
+      background-color: white;
+      padding: .1rem;
+      font-size: 16px;
+      border-radius: 3px;
+    }
+  }
+
+  #checkoutbtn {
+    background-color: var(--dark-grey);
+    padding: .8rem .5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+}
+
+/* End of Checkout Form */
 
 .products {
   margin-top: 2rem;
