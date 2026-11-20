@@ -197,6 +197,7 @@ button {
   input {
     margin-bottom: .5rem;
     height: 2.2rem;
+    padding-left: 10px;
     border: none;
     border-radius: 5px;
     width: 300px;
