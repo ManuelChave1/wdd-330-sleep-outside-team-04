@@ -1,10 +1,10 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 import { getParam } from "./utils.mjs";
 
 const productHtmlRender = document.querySelector("#product-list");
 const productCategoryTitle = document.querySelector("#products-category");
-const data = new ProductData();
+const data = new ExternalServices();
 const category = getParam("category")
 const product = new ProductList(category, data, productHtmlRender);
 product.init();

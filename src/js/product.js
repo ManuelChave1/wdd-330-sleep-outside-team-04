@@ -1,9 +1,9 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import { getParam, loadHeaderFooter } from "./utils.mjs";
 import { ProductDetails } from "./ProductDetails.mjs";
 
 // Create a data source for tent products.
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 const productsID = getParam("product");
 const ProductDetail = new ProductDetails(productsID, dataSource);
 ProductDetail.init();

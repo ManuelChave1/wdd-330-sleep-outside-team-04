@@ -10,7 +10,7 @@
   <title>Sleep Outside | Checkout</title>
 
   <link rel="stylesheet" href="../css/style.css" />
-  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/checkout.js"></script>
 </head>
 
 <body>
@@ -26,12 +26,12 @@
 
         <span class="inputField">
           <label for="firstName">First Name*</label>
-          <input type="text" name="firstName" id="firstName" required>
+          <input type="text" name="fname" id="firstName" required>
         </span>
 
         <span class="inputField">
           <label for="lastName">Last Name*</label>
-          <input type="text" name="lastName" id="lastName" required>
+          <input type="text" name="lname" id="lastName" required>
         </span>
 
       </fieldset>
@@ -42,7 +42,7 @@
         <span class="inputField">
 
           <label for="address">Street Address:</label>
-          <input type="text" name="address" id="address" required>
+          <input type="text" name="street" id="address" required>
 
           <label for="city">City:</label>
           <input type="text" name="city" id="city" required>
@@ -54,7 +54,7 @@
           <input type="text" name="state" id="state" required>
 
           <label for="zipcode">Zip Code:</label>
-          <input type="text" name="zipcode" id="zipcode" required>
+          <input type="text" name="zip" id="zipcode" required>
         </span>
       </fieldset>
 
@@ -63,31 +63,33 @@
         <span class="inputField" id="cardrow">
 
           <label for="cardNumber">Credit Card Number:</label>
-          <input type="text" name="cardNumber" id="cardNumber" required>
+          <input type="text" name="cardNumber" inputmode="numeric" id="cardNumber" required>
         </span>
 
         <span class="inputField">
 
           <label for="expDate">Expiration Date:</label>
-          <input type="text" name="expDate" id="expDate" required>
+          <input type="text" name="expiration" id="expDate" required>
         </span>
         <span class="inputField">
 
           <label for="securityCode">Security Code</label>
-          <input type="number" name="securityCode" id="securityCode" required>
+          <input type="number" name="code" id="securityCode" required>
         </span>
 
       </fieldset>
 
       <div class="costs">
         <!-- placeholders -->
-        <span >SubTotal: <b id="subTotal">$1233.42</b></span>
-        <span >Tax: <b id="tax"> 65%</b></span>
-        <span>Shipping <b id="shipping">$1234.56</b></span>
-        <span>Total : <b id="total">$98765</b></span>
+        <span >Items: <b id="itemCount">0</b></span>
+        <span >SubTotal: <b id="subTotal">$0.00</b></span>
+        <span >Tax: <b id="tax"> $0.00</b></span>
+        <span>Shipping <b id="shipping">$0.00</b></span>
+        <span>Total : <b id="total">$0.00</b></span>
       </div>
 
-      <button id="checkoutbtn" type="submit">Proceed to Checkout</button>
+      <p id="checkout-message" role="status"></p>
+      <button class="checkoutbtn" type="submit">Checkout</button>
     </form>
   </main>
 
