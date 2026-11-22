@@ -11,7 +11,7 @@ function renderWishlistContents() {
   );
 
   // Display the products on the cart page.
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  document.querySelector(".wishlist-list").innerHTML = htmlItems.join("");
 
 }
 
@@ -29,23 +29,19 @@ function wishlistItemTemplate(item, index) {
 
   // Create the HTML for one cart product.
   const newItem = `
-    <li class="cart-card divider">
-      <a href="#" class="cart-card__image">
-        <img
-          src="${imagePath}"
-          alt="${item.Name}"
-        />
-      </a>
-
-      <a href="#" class="cart-card__name">
-        <h2 class="card__name">${item.Name}</h2>
-      </a>
+    <li class="wishlist-card">
+    <a href="#" class="cart-card__image">
+      <img
+        src="${imagePath}"
+        alt="${item.Name}"
+      />
+    </a>
+    <h2 class="card__name">${item.Name}</h2>
 
       <p class="cart-card__color">${color}</p>
-      <button type="button" class="removeFromCart" data-index="${index}">X</button>
+      <button type="button" class="removeFromWishlist" data-index="${index}">+</button>
     </li>
   `;
-
   return newItem;
 }
 
@@ -65,5 +61,5 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
   localStorage.setItem("so-cart-wishlist", JSON.stringify(cartItems));
   // rerender the cart for fresh results
   renderWishlistContents();
-  wishlistCartCounter("so-cart-wishlist",".wishlistCounter");
+  wishlistCartCounter("so-cart-wishlist", ".wishlistCounter");
 });
