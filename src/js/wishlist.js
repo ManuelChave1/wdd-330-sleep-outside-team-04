@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter, wishlistCartCounter } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter,removeFromCartWishlist } from "./utils.mjs";
 
 loadHeaderFooter();
 function renderWishlistContents() {
@@ -48,18 +48,6 @@ function wishlistItemTemplate(item, index) {
 renderWishlistContents();
 
 //add evet listener to every buton in the .product_list
-document.querySelector(".product-list").addEventListener("click", (event) => {
-  //sets the button to any clicked .removefromcart clas
-  const button = event.target.closest(".removeFromCart");
-  if (!button) return;
-  //get the position of the btn
-  const index = Number(button.dataset.index);
-  const cartItems = getLocalStorage("so-cart-wishlist") || [];
-  //remove the item in the list using the position of the btn
-  cartItems.splice(index, 1);
-  // set the new cart after removing the delete item
-  localStorage.setItem("so-cart-wishlist", JSON.stringify(cartItems));
-  // rerender the cart for fresh results
-  renderWishlistContents();
-  wishlistCartCounter("so-cart-wishlist", ".wishlistCounter");
+document.querySelector(".wishlist-list").addEventListener("click", (event) => {
+  removeFromCartWishlist(event,".removeFromWishlist","so-cart-wishlist",renderWishlistContents,".wishlistCount");
 });

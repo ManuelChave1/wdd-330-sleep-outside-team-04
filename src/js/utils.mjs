@@ -97,5 +97,26 @@ export function addProductToWishlist(product) {
   // Save the updated cart array to localStorage.
   setLocalStorage("so-cart-wishlist", wishlist);
   wishlistCartCounter("so-cart-wishlist", ".wishlistCount");
-
 }
+
+export function removeFromCartWishlist(event,targetBtn,localStorageKey,renderFn,counterTemplate) {
+
+  //sets the button to any clicked .removefromcart clas
+  const button = event.target.closest(targetBtn);
+  
+  if (!button) return;
+  
+  //get the position of the btn
+  const index = Number(button.dataset.index);
+  const Items = getLocalStorage(localStorageKey) || [];
+  
+  //remove the item in the list using the position of the btn
+  Items.splice(index, 1);
+  
+  // set the new cart after removing the delete item
+  setLocalStorage(localStorageKey,Items);
+  
+  // rerender the cart for fresh results
+  renderFn();
+  wishlistCartCounter(localStorageKey, counterTemplate);
+};
