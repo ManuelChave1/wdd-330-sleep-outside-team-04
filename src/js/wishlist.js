@@ -65,5 +65,5 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
   localStorage.setItem("so-cart-wishlist", JSON.stringify(cartItems));
   // rerender the cart for fresh results
   renderWishlistContents();
-  wishlistCartCounter();
+  wishlistCartCounter("so-cart-wishlist",".wishlistCounter");
 });

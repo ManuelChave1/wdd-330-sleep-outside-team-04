@@ -62,33 +62,40 @@ export async function loadHeaderFooter() {
   renderWithTemplate(header, headerTemplate)
   renderWithTemplate(footer, footerTemplate)
 
-  await wishlistCartCounter("so-cart",".cartCount");
-  await wishlistCartCounter("so-cart-wishlist",".wishlistCount");
+  await wishlistCartCounter("so-cart", ".cartCount");
+  await wishlistCartCounter("so-cart-wishlist", ".wishlistCount");
 }
 
 
-export async function wishlistCartCounter(localStorageKey,counterDisplay) {
+export async function wishlistCartCounter(localStorageKey, counterDisplay) {
   const items = await getLocalStorage(localStorageKey);
 
   const displayCount = document.querySelector(counterDisplay);
 
-  displayCount.textContent = items.length > 0 ? items.length : "";
+  if (items.length > 0) {
+    displayCount.textContent = items.length;
+  } else {
+    displayCount.hidden = true;
+  }
+
 }
 
 export function addProductToWishlist(product) {
-    // Retrieve existing cart items or start with an empty array.
-    const wishlist = getLocalStorage("so-cart-wishlist") || [];
+  // Retrieve existing cart items or start with an empty array.
+  const wishlist = getLocalStorage("so-cart-wishlist") || [];
 
-    const existingProduct = wishlist.find((item) => item.Id === product.Id);
+  const existingProduct = wishlist.find((item) => item.Id === product.Id);
 
-    // Add the selected product without removing existing items.
-    if (existingProduct) {
-        return;
-    }
-    else {
-        product.quantity = 1;
-        wishlist.push(product);
-    }
-    // Save the updated cart array to localStorage.
-    setLocalStorage("so-cart-wishlist", wishlist);
+  // Add the selected product without removing existing items.
+  if (existingProduct) {
+    return;
+  }
+  else {
+    product.quantity = 1;
+    wishlist.push(product);
+  }
+  // Save the updated cart array to localStorage.
+  setLocalStorage("so-cart-wishlist", wishlist);
+  wishlistCartCounter("so-cart-wishlist", ".wishlistCount");
+
 }
