@@ -200,6 +200,7 @@ button {
     border: none;
     border-radius: 5px;
     width: 300px;
+    padding: 0 .6rem ;
   }
 
   #cardrow {
