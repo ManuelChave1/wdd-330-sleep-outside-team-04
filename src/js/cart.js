@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter, wishlistCartCounter,removeFromCartWishlist } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter,removeFromCartWishlist } from "./utils.mjs";
 
 loadHeaderFooter();
 function renderCartContents() {

@@ -314,7 +314,8 @@ button {
   justify-content: space-between;
   min-height: 300px;
 }
-.removeFromWishlist{
+
+.removeFromWishlist {
   transform: rotate(45deg);
 }
 
@@ -337,7 +338,8 @@ button {
   position: relative;
 }
 
-.removeFromCart,.removeFromWishlist {
+.removeFromCart,
+.removeFromWishlist {
   padding: 0;
   background-color: transparent;
   color: red;
@@ -346,6 +348,16 @@ button {
   position: absolute;
   top: 1px;
   right: 7px;
+}
+
+.addToCartFromWishlist {
+  background: none;
+  padding: 8px;
+  cursor: pointer;
+  width: 40px;
+  position: absolute;
+  top: 0;
+  left: 5px;
 }
 
 li:has(.removeFromCart:hover) {
