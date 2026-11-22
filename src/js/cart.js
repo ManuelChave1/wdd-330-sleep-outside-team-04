@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter, cartCount } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, wishlistCartCounter } from "./utils.mjs";
 
 loadHeaderFooter();
 function renderCartContents() {
@@ -79,5 +79,5 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
   localStorage.setItem("so-cart", JSON.stringify(cartItems));
   // rerender the cart for fresh results
   renderCartContents();
-  cartCount();
+  wishlistCartCounter("so-cart",".cartCount");
 });

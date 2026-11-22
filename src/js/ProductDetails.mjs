@@ -57,7 +57,7 @@ function renderProductDetails(product) {
     btnAddToCart.textContent = "Add to Cart";
     btnAddToCart.addEventListener("click", () => {
         addProductToCart(product)
-        cartCount();
+        wishlistCartCounter("so-cart-wishlist",".cartCounter");
     })
     divBtnAdd.appendChild(btnAddToCart);
     maincontainer.appendChild(clone)
