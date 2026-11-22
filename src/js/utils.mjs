@@ -62,14 +62,33 @@ export async function loadHeaderFooter() {
   renderWithTemplate(header, headerTemplate)
   renderWithTemplate(footer, footerTemplate)
 
-  await cartCount();
+  await wishlistCartCounter("so-cart",".cartCount");
+  await wishlistCartCounter("so-cart-wishlist",".wishlistCount");
 }
 
 
-export async function cartCount() {
-  const items = await getLocalStorage("so-cart");
+export async function wishlistCartCounter(localStorageKey,counterDisplay) {
+  const items = await getLocalStorage(localStorageKey);
 
-  const displayCount = document.querySelector(".cartCount");
+  const displayCount = document.querySelector(counterDisplay);
 
   displayCount.textContent = items.length > 0 ? items.length : "";
+}
+
+export function addProductToWishlist(product) {
+    // Retrieve existing cart items or start with an empty array.
+    const wishlist = getLocalStorage("so-cart-wishlist") || [];
+
+    const existingProduct = wishlist.find((item) => item.Id === product.Id);
+
+    // Add the selected product without removing existing items.
+    if (existingProduct) {
+        return;
+    }
+    else {
+        product.quantity = 1;
+        wishlist.push(product);
+    }
+    // Save the updated cart array to localStorage.
+    setLocalStorage("so-cart-wishlist", wishlist);
 }

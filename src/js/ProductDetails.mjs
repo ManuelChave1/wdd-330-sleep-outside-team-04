@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage,cartCount } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartCount,addProductToWishlist } from "./utils.mjs";
 
 export class ProductDetails {
     constructor(productsID, dataSource) {
@@ -28,13 +28,15 @@ export function addProductToCart(product) {
     if (existingProduct) {
         existingProduct.quantity++;
     }
-    else{
+    else {
         product.quantity = 1;
         cartItems.push(product);
     }
     // Save the updated cart array to localStorage.
     setLocalStorage("so-cart", cartItems);
 }
+
+
 
 
 function renderProductDetails(product) {
@@ -56,9 +58,16 @@ function renderProductDetails(product) {
     btnAddToCart.addEventListener("click", () => {
         addProductToCart(product)
         cartCount();
-
     })
     divBtnAdd.appendChild(btnAddToCart);
     maincontainer.appendChild(clone)
+    document.querySelector('.addToWishList').addEventListener('click', (e) => {
+        const btn = e.currentTarget;
+        const next = btn.getAttribute('aria-pressed') !== 'true';
+        btn.setAttribute('aria-pressed', String(next));
+        btn.setAttribute('aria-label', next ? 'Remove from wishlist' : 'Add to wishlist');
+        addProductToWishlist(product);
+    });
+
 
 }
