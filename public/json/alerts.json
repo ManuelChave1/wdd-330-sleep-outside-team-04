@@ -1,0 +1,18 @@
+[
+  {
+    "message": "This is only a test",
+    "background": "darkblue",
+    "color": "white"
+  },
+  {
+    "message": "Free shipping on orders over $100!",
+    "background": "darkgreen",
+    "color": "white"
+  },
+  {
+    "message": "30%OFF if you buy Assault Tent - 3-Person",
+    "background": "darkred",
+    "color": "white"
+  }
+
+] 
