@@ -463,3 +463,65 @@ footer {
 .breadcrumbs [aria-current="page"] {
   font-weight: 600;
 }
+
+/* Quick View modal */
+.quick-view-modal {
+  position: fixed;
+  width: min(90%, 700px);
+  max-height: 85vh;
+  padding: 2rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 8px;
+  margin: auto;
+  overflow-y: auto;
+}
+
+.quick-view-modal::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.quick-view-close {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--dark-grey);
+  border-radius: 4px;
+  background-color: var(--dark-grey);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.quick-view-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.quick-view-content img {
+  width: 100%;
+  height: auto;
+}
+
+.quick-view-details h2,
+.quick-view-details h3,
+.quick-view-details p {
+  margin: 0.5rem 0;
+}
+
+.quick-view-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  .quick-view-content {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-view-modal {
+    padding: 1.5rem;
+  }
+}
