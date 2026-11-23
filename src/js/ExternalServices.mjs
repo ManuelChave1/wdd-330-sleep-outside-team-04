@@ -8,7 +8,7 @@ function convertToJson(res) {
     }
 }
 
-export default class ProductData {
+export default class ExternalServices {
     async getData(category) {
         const response = await fetch(`${baseURL}products/search/${category}`);
         const data = await convertToJson(response);
@@ -20,4 +20,19 @@ export default class ProductData {
         const product = await convertToJson(response);
         return product.Result;
     }
+
+    async checkout(order) {
+        const response = await fetch("https://wdd330-backend-osp8.onrender.com/checkout", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(order)
+
+        })
+        return await convertToJson(response)
+
+    }
+
+
 }
