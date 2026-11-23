@@ -73,3 +73,13 @@ export async function cartCount() {
 
   displayCount.textContent = items.length > 0 ? items.length : "";
 }
+
+export function formDataToJSON(formData) {
+  const json = {};
+
+  formData.forEach((value, key) => {
+    json[key] = value;
+  });
+
+  return json;
+}

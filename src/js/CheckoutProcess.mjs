@@ -1,4 +1,4 @@
-import ExternalServices from "./ExternalServices.mjs";
+/*import ExternalServices from "./ExternalServices.mjs";
 
 export default class CheckoutProcess {
     constructor() {
@@ -42,29 +42,26 @@ export default class CheckoutProcess {
             `$${total.toFixed(2)}`;
     }
 
+    packageItems(items) {
+
+        return items.map(item => {
+
+            return {
+                id: item.Id,
+                name: item.Name,
+                price: item.FinalPrice,
+                quantity: item.quantity || 1
+            };
+
+        });
+
+    }
+
 
 }
 
-function formDataToJSON(formData) {
-    const json = {};
 
-    formData.forEach((value, key) => {
-        json[key] = value;
-    });
 
-    return json;
-}
-
-function packageItems(items) {
-    return items.map(item => {
-        return {
-            id: item.Id,
-            name: item.Name,
-            price: item.FinalPrice,
-            quantity: item.Quantity
-        };
-    });
-}
 
 async function checkout(form) {
 
@@ -105,4 +102,114 @@ form.addEventListener("submit", async (event) => {
 
     console.log(response);
 
-});
+}); */
+
+import ExternalServices from "./ExternalServices.mjs";
+
+// Converts form information into a JavaScript object
+function formDataToJSON(formElement) {
+    const formData = new FormData(formElement);
+    return Object.fromEntries(formData.entries());
+}
+
+export default class CheckoutProcess {
+
+    constructor() {
+        this.externalServices = new ExternalServices();
+
+        this.subtotal = 0;
+        this.tax = 0;
+        this.shipping = 0;
+        this.orderTotal = 0;
+    }
+
+    // Calculate subtotal
+    calculateSubtotal() {
+
+        const cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+
+        this.subtotal = cart.reduce((total, item) => {
+            return total + Number(item.FinalPrice) * (Number(item.quantity) || 1);
+        }, 0);
+
+        document.querySelector("#subTotal").textContent =
+            `$${this.subtotal.toFixed(2)}`;
+
+        return this.subtotal;
+    }
+
+    // Calculate tax, shipping and order total
+    calculateOrderDetails() {
+
+        const cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+
+        const totalItems = cart.reduce((total, item) => {
+            return total + (Number(item.quantity) || 1);
+        }, 0);
+
+        this.tax = this.subtotal * 0.06;
+
+        this.shipping = totalItems > 0
+            ? 10 + (totalItems - 1) * 2
+            : 0;
+
+        this.orderTotal = this.subtotal + this.tax + this.shipping;
+
+        document.querySelector("#tax").textContent =
+            `$${this.tax.toFixed(2)}`;
+
+        document.querySelector("#shipping").textContent =
+            `$${this.shipping.toFixed(2)}`;
+
+        document.querySelector("#total").textContent =
+            `$${this.orderTotal.toFixed(2)}`;
+    }
+
+    // Simplify the cart products
+    packageItems(items) {
+
+        return items.map(item => {
+
+            return {
+                id: item.Id,
+                name: item.Name,
+                price: Number(item.FinalPrice),
+                quantity: Number(item.quantity) || 1
+            };
+
+        });
+
+    }
+
+    // Prepare and submit the order
+    async checkout(form) {
+
+        // Get form information
+        const formData = formDataToJSON(form);
+
+        // Get shopping cart
+        const cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+
+        // Prepare the order object
+        const order = {
+
+            ...formData,
+
+            orderDate: new Date().toISOString(),
+
+            orderTotal: this.orderTotal.toFixed(2),
+
+            shipping: this.shipping,
+
+            tax: this.tax.toFixed(2),
+
+            items: this.packageItems(cart)
+
+        };
+
+        // Send order to the server
+        const response = await this.externalServices.checkout(order);
+
+        return response;
+    }
+}
