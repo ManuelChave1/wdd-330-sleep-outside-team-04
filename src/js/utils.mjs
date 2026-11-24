@@ -96,7 +96,7 @@ export function addProductToWishlist(product) {
   }
   // Save the updated cart array to localStorage.
   setLocalStorage("so-cart-wishlist", wishlist);
-  wishlistCartCounter("so-cart-wishlist", ".wishlistCount");
+  loadHeaderFooter();
 }
 
 export function removeFromCartWishlist(event,targetBtn,localStorageKey,renderFn,counterTemplate) {

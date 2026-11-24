@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, wishlistCartCounter,addProductToWishlist } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, wishlistCartCounter, addProductToWishlist, loadHeaderFooter } from "./utils.mjs";
 
 export class ProductDetails {
     constructor(productsID, dataSource) {
@@ -34,6 +34,7 @@ export function addProductToCart(product) {
     }
     // Save the updated cart array to localStorage.
     setLocalStorage("so-cart", cartItems);
+    loadHeaderFooter();
 }
 
 
@@ -57,7 +58,6 @@ function renderProductDetails(product) {
     btnAddToCart.textContent = "Add to Cart";
     btnAddToCart.addEventListener("click", () => {
         addProductToCart(product)
-        wishlistCartCounter("so-cart",".cartCount");
     })
     divBtnAdd.appendChild(btnAddToCart);
     maincontainer.appendChild(clone)
