@@ -533,6 +533,7 @@ footer {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
   padding: 20px;
 }
 
@@ -586,7 +587,8 @@ footer {
     grid-row: 4;
     text-align: left;
   }
-}
+
+ 
 
 /* Breadcrumb navigation */
 .breadcrumbs {
