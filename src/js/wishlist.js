@@ -1,4 +1,9 @@
-import { getLocalStorage, loadHeaderFooter, removeFromCartWishlist, wishlistCartCounter } from "./utils.mjs";
+import {
+  getLocalStorage,
+  loadHeaderFooter,
+  removeFromCartWishlist,
+  wishlistCartCounter,
+} from "./utils.mjs";
 import { addProductToCart } from "./ProductDetails.mjs";
 
 loadHeaderFooter();
@@ -13,7 +18,6 @@ function renderWishlistContents() {
 
   // Display the products on the cart page.
   document.querySelector(".wishlist-list").innerHTML = htmlItems.join("");
-
 }
 
 function wishlistItemTemplate(item, index) {
@@ -57,17 +61,23 @@ renderWishlistContents();
 
 //add evet listener to every buton in the .product_list
 document.querySelector(".wishlist-list").addEventListener("click", (event) => {
-  removeFromCartWishlist(event, ".removeFromWishlist", "so-cart-wishlist", renderWishlistContents, ".wishlistCount");
+  removeFromCartWishlist(
+    event,
+    ".removeFromWishlist",
+    "so-cart-wishlist",
+    renderWishlistContents,
+    ".wishlistCount",
+  );
 });
 
 document.querySelector(".wishlist-list").addEventListener("click", (event) => {
   const button = event.target.closest(".addToCartFromWishlist");
-  
+
   if (!button) return;
 
   const index = Number(button.dataset.index);
   const wishlist = getLocalStorage("so-cart-wishlist") || [];
-  
+
   const item = wishlist[index];
   if (!item) return;
 

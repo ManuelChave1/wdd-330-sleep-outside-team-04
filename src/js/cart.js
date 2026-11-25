@@ -1,4 +1,8 @@
-import { getLocalStorage, loadHeaderFooter,removeFromCartWishlist } from "./utils.mjs";
+import {
+  getLocalStorage,
+  loadHeaderFooter,
+  removeFromCartWishlist,
+} from "./utils.mjs";
 
 loadHeaderFooter();
 function renderCartContents() {
@@ -18,10 +22,12 @@ function renderCartContents() {
   if (cartItems.length > 0) {
     document.querySelector(".hide").style.display = "block";
     const total = cartItems.reduce(
-      (sum, item) => sum + Number(item.FinalPrice) * (item.quantity || 1), 0,);
+      (sum, item) => sum + Number(item.FinalPrice) * (item.quantity || 1),
+      0,
+    );
 
     document.querySelector(".cart-total").textContent =
-    `Total Price: $${total.toFixed(2)}`;
+      `Total Price: $${total.toFixed(2)}`;
   }
 }
 
@@ -66,6 +72,12 @@ function cartItemTemplate(item, index) {
 renderCartContents();
 
 //add evet listener to every buton in the .product_list
-document.querySelector(".product-list").addEventListener("click", (event)=>{
-  removeFromCartWishlist(event,".removeFromCart","so-cart",renderCartContents,".cartCount");
+document.querySelector(".product-list").addEventListener("click", (event) => {
+  removeFromCartWishlist(
+    event,
+    ".removeFromCart",
+    "so-cart",
+    renderCartContents,
+    ".cartCount",
+  );
 });

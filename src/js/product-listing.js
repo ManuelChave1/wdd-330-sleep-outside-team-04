@@ -9,7 +9,7 @@ const productCategoryTitle = document.querySelector("#products-category");
 const data = new ProductData();
 const category = getParam("category");
 const product = new ProductList(category, data, productHtmlRender);
-const mainElement = document.querySelector ("main");
+const mainElement = document.querySelector("main");
 const alert = new Alert(mainElement);
 alert.showAlerts();
 
