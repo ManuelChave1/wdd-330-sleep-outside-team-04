@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, cartCount, getDiscountPercentage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartCount, getDiscountPercentage, wishlistCartCounter, addProductToWishlist, loadHeaderFooter } from "./utils.mjs";
 
 export class ProductDetails {
     constructor(productsID, dataSource) {
@@ -13,6 +13,7 @@ export class ProductDetails {
         const product = await this.getProduct()
         renderProductDetails(product)
 
+        return product;
     }
 }
 
@@ -27,13 +28,16 @@ export function addProductToCart(product) {
     if (existingProduct) {
         existingProduct.quantity++;
     }
-    else{
+    else {
         product.quantity = 1;
         cartItems.push(product);
     }
     // Save the updated cart array to localStorage.
     setLocalStorage("so-cart", cartItems);
+    loadHeaderFooter();
 }
+
+
 
 
 function renderProductDetails(product) {
@@ -61,10 +65,16 @@ function renderProductDetails(product) {
     btnAddToCart.textContent = "Add to Cart";
     btnAddToCart.addEventListener("click", () => {
         addProductToCart(product)
-        cartCount();
-
     })
     divBtnAdd.appendChild(btnAddToCart);
     maincontainer.appendChild(clone)
+    document.querySelector('.addToWishList').addEventListener('click', (e) => {
+        const btn = e.currentTarget;
+        const next = btn.getAttribute('aria-pressed') !== 'true';
+        btn.setAttribute('aria-pressed', String(next));
+        btn.setAttribute('aria-label', next ? 'Remove from wishlist' : 'Add to wishlist');
+        addProductToWishlist(product);
+    });
+
 
 }

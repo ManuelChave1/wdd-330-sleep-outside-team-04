@@ -62,16 +62,29 @@ export async function loadHeaderFooter() {
   renderWithTemplate(header, headerTemplate)
   renderWithTemplate(footer, footerTemplate)
 
+  await wishlistCartCounter("so-cart", ".cartCount");
+  await wishlistCartCounter("so-cart-wishlist", ".wishlistCount");
   await cartCount();
 }
-
-
 export async function cartCount() {
   const items = await getLocalStorage("so-cart");
 
   const displayCount = document.querySelector(".cartCount");
 
   displayCount.textContent = items.length > 0 ? items.length : "";
+}
+
+export async function wishlistCartCounter(localStorageKey, counterDisplay) {
+  const items = await getLocalStorage(localStorageKey);
+
+  const displayCount = document.querySelector(counterDisplay);
+  if (items.length > 0) {
+    displayCount.textContent = items.length;
+  } else {
+    displayCount.hidden = true;
+  }
+
+  // displayCount.textContent = items.length > 0 ? items.length : "";
 }
 
 export function getDiscountPercentage(product) {
@@ -93,3 +106,47 @@ export function getDiscountPercentage(product) {
     ((retailPrice - finalPrice) / retailPrice) * 100
   );
 }
+
+
+
+
+export function addProductToWishlist(product) {
+  // Retrieve existing cart items or start with an empty array.
+  const wishlist = getLocalStorage("so-cart-wishlist") || [];
+
+  const existingProduct = wishlist.find((item) => item.Id === product.Id);
+
+  // Add the selected product without removing existing items.
+  if (existingProduct) {
+    return;
+  }
+  else {
+    product.quantity = 1;
+    wishlist.push(product);
+  }
+  // Save the updated cart array to localStorage.
+  setLocalStorage("so-cart-wishlist", wishlist);
+  loadHeaderFooter();
+}
+
+export function removeFromCartWishlist(event, targetBtn, localStorageKey, renderFn, counterTemplate) {
+
+  //sets the button to any clicked .removefromcart clas
+  const button = event.target.closest(targetBtn);
+
+  if (!button) return;
+
+  //get the position of the btn
+  const index = Number(button.dataset.index);
+  const Items = getLocalStorage(localStorageKey) || [];
+
+  //remove the item in the list using the position of the btn
+  Items.splice(index, 1);
+
+  // set the new cart after removing the delete item
+  setLocalStorage(localStorageKey, Items);
+
+  // rerender the cart for fresh results
+  renderFn();
+  wishlistCartCounter(localStorageKey, counterTemplate);
+};
