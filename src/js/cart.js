@@ -1,8 +1,4 @@
-import {
-  getLocalStorage,
-  loadHeaderFooter,
-  removeFromCartWishlist,
-} from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, removeFromCartWishlist } from "./utils.mjs";
 
 loadHeaderFooter();
 function renderCartContents() {
@@ -29,7 +25,75 @@ function renderCartContents() {
     document.querySelector(".cart-total").textContent =
       `Total Price: $${total.toFixed(2)}`;
   }
+
+  const cartCards = document.querySelectorAll(".cart-card");
+
+  function updateCartTotal() {
+
+    const total = cartItems.reduce((sum, item) => {
+
+
+      const quantity = item.quantity ?? 1;
+
+      return sum + (item.FinalPrice * quantity);
+
+    }, 0);
+
+    document.querySelector(".cart-total").textContent = total.toFixed(2);
+  }
+
+  cartCards.forEach((card, index) => {
+
+    const item = cartItems[index];
+    let quantity = item.quantity ?? 1;
+    // let quantity = cartItems.find(item => item.quantity) || 1
+    // let quantity = 1;
+
+    const btnQtydecrease = card.querySelector(".qty-decrease");
+    const btnQtyAdd = card.querySelector(".qty-add");
+    const qtyInfor = card.querySelector(".qty-infor");
+    const priceInfor = card.querySelector(".cart-card__price");
+
+    btnQtyAdd.addEventListener("click", () => {
+
+      quantity++;
+
+      item.quantity = quantity;
+
+      qtyInfor.textContent = item.quantity;
+
+      priceInfor.textContent = item.FinalPrice.toFixed(2) * quantity;
+      saveCart()
+      updateCartTotal()
+
+    });
+
+    btnQtydecrease.addEventListener("click", () => {
+
+      if (quantity > 1) {
+
+        quantity--;
+
+        item.quantity = quantity;
+
+        qtyInfor.textContent = item.quantity;
+
+        priceInfor.textContent = item.FinalPrice.toFixed(2) * quantity;
+        saveCart()
+        updateCartTotal()
+
+      }
+
+    });
+
+  });
+  updateCartTotal()
+
+  function saveCart() {
+    localStorage.setItem("so-cart", JSON.stringify(cartItems));
+  }
 }
+
 
 function cartItemTemplate(item, index) {
   // Convert the saved image path to a root-relative URL.
@@ -58,9 +122,14 @@ function cartItemTemplate(item, index) {
       </a>
 
       <p class="cart-card__color">${color}</p>
-      <p class="cart-card__quantity">qty: ${item.quantity}</p>
+      <p class="cart-card__quantity">Quantity <br> <br>
+        <span class = "cart-cart_qty-infor">
+        <button class = "qty-decrease">-</button> <span class = "qty-infor">${item.quantity}</span><button class = "qty-add">+</button>
+        </span>
+      </p>
+    
       <p class="cart-card__price">
-        $${Number(item.FinalPrice).toFixed(2)}
+        $${Number(item.FinalPrice).toFixed(2) * item.quantity}
       </p>
       <button type="button" class="removeFromCart" data-index="${index}">X</button>
     </li>
@@ -81,3 +150,4 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
     ".cartCount",
   );
 });
+

@@ -75,12 +75,10 @@ export async function cartCount() {
   displayCount.textContent = items.length > 0 ? items.length : "";
 }
 
-
 export async function wishlistCartCounter(localStorageKey, counterDisplay) {
   const items = await getLocalStorage(localStorageKey);
 
   const displayCount = document.querySelector(counterDisplay);
-
   if (items.length > 0) {
     displayCount.textContent = items.length;
   } else {
@@ -88,18 +86,25 @@ export async function wishlistCartCounter(localStorageKey, counterDisplay) {
   }
 }
 
-export function formDataToJSON(formData) {
-  const json = {};
+export function getDiscountPercentage(product) {
+  const retailPrice = Number(product.SuggestedRetailPrice);
+  const finalPrice = Number(product.FinalPrice);
 
-  formData.forEach((value, key) => {
-    json[key] = value;
-  });
+  const hasDiscount =
+    Number.isFinite(retailPrice) &&
+    Number.isFinite(finalPrice) &&
+    retailPrice > 0 &&
+    finalPrice >= 0 &&
+    finalPrice < retailPrice;
 
-  return json;
+  if (!hasDiscount) {
+    return 0;
+  }
+
+  return Math.round(
+    ((retailPrice - finalPrice) / retailPrice) * 100
+  );
 }
-
-
-
 
 export function addProductToWishlist(product) {
   // Retrieve existing cart items or start with an empty array.

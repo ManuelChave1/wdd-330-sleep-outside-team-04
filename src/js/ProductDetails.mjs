@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, wishlistCartCounter, addProductToWishlist, loadHeaderFooter } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartCount, getDiscountPercentage, wishlistCartCounter, addProductToWishlist, loadHeaderFooter } from "./utils.mjs";
 
 export class ProductDetails {
     constructor(productsID, dataSource) {
@@ -51,6 +51,13 @@ function renderProductDetails(product) {
     image.src = product.Images.PrimaryLarge;
     image.alt = product.name;
     clone.querySelector("#product-price").textContent = product.FinalPrice;
+    const discounte = getDiscountPercentage(product)
+    if (discounte > 0) {
+        clone.querySelector("#product-discounte").innerHTML = `<span class="product-card__discount">
+            ${discounte}% OFF
+        </span>`
+
+    }
     clone.querySelector("#product-color").textContent = product.Colors.ColorName;
     clone.querySelector("#product-description").innerHTML = product.DescriptionHtmlSimple;
     const divBtnAdd = clone.querySelector("#product-detail__add")
