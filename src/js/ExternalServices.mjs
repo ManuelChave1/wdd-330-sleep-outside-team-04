@@ -1,4 +1,5 @@
 const baseURL = import.meta.env.VITE_SERVER_URL;
+const postURL = import.meta.env.VITE_SERVER_URL_POST;
 
 function convertToJson(res) {
     if (res.ok) {
@@ -21,15 +22,16 @@ export default class ExternalServices {
         return product.Result;
     }
 
-    async checkout(order) {
-        const response = await fetch("https://wdd330-backend-osp8.onrender.com/checkout", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(order)
 
-        })
+    async checkout(payload) {
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        }
+        const response = await fetch(postURL, options)
         return await convertToJson(response)
 
     }
