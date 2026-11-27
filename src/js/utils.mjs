@@ -64,20 +64,46 @@ export async function loadHeaderFooter() {
 
   await wishlistCartCounter("so-cart", ".cartCount");
   await wishlistCartCounter("so-cart-wishlist", ".wishlistCount");
+  await cartCount();
 }
 
+export async function cartCount() {
+  const items = await getLocalStorage("so-cart");
+
+  const displayCount = document.querySelector(".cartCount");
+
+  displayCount.textContent = items.length > 0 ? items.length : "";
+}
 
 export async function wishlistCartCounter(localStorageKey, counterDisplay) {
   const items = await getLocalStorage(localStorageKey);
 
   const displayCount = document.querySelector(counterDisplay);
-
   if (items.length > 0) {
     displayCount.textContent = items.length;
   } else {
     displayCount.hidden = true;
   }
+}
 
+export function getDiscountPercentage(product) {
+  const retailPrice = Number(product.SuggestedRetailPrice);
+  const finalPrice = Number(product.FinalPrice);
+
+  const hasDiscount =
+    Number.isFinite(retailPrice) &&
+    Number.isFinite(finalPrice) &&
+    retailPrice > 0 &&
+    finalPrice >= 0 &&
+    finalPrice < retailPrice;
+
+  if (!hasDiscount) {
+    return 0;
+  }
+
+  return Math.round(
+    ((retailPrice - finalPrice) / retailPrice) * 100
+  );
 }
 
 export function addProductToWishlist(product) {
@@ -99,23 +125,23 @@ export function addProductToWishlist(product) {
   loadHeaderFooter();
 }
 
-export function removeFromCartWishlist(event,targetBtn,localStorageKey,renderFn,counterTemplate) {
+export function removeFromCartWishlist(event, targetBtn, localStorageKey, renderFn, counterTemplate) {
 
   //sets the button to any clicked .removefromcart clas
   const button = event.target.closest(targetBtn);
-  
+
   if (!button) return;
-  
+
   //get the position of the btn
   const index = Number(button.dataset.index);
   const Items = getLocalStorage(localStorageKey) || [];
-  
+
   //remove the item in the list using the position of the btn
   Items.splice(index, 1);
-  
+
   // set the new cart after removing the delete item
-  setLocalStorage(localStorageKey,Items);
-  
+  setLocalStorage(localStorageKey, Items);
+
   // rerender the cart for fresh results
   renderFn();
   wishlistCartCounter(localStorageKey, counterTemplate);

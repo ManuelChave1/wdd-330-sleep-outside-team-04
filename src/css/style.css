@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -144,7 +144,6 @@ button {
   padding: 3px;
 }
 
-
 .cartCount,
 .wishlistCount {
   right: 0;
@@ -178,79 +177,80 @@ button {
 .checkout-form {
   display: grid;
   justify-self: center;
-  margin: .3rem 2rem;
-  padding: .5rem;
+  margin: 0.3rem 2rem;
+  padding: 0.5rem;
   border-radius: 12px;
   background-color: var(--light-grey);
   max-width: 800px;
   min-width: 700px;
+}
 
-  h1 {
-    text-decoration: underline;
-    margin-bottom: .4rem;
-  }
+h1 {
+  text-decoration: underline;
+  margin-bottom: 0.4rem;
+}
 
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: .3rem;
-    margin: 1rem 0;
-    justify-content: space-between;
-    flex-direction: row;
-  }
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.3rem;
+  margin: 1rem 0;
+  justify-content: space-between;
+  flex-direction: row;
+}
 
-  label {
-    font-family: serif;
-    font-size: larger;
-    display: block;
-    font-weight: bold;
-  }
+label {
+  font-family: serif;
+  font-size: larger;
+  display: block;
+  font-weight: bold;
+}
+
+input {
+  margin-bottom: 0.5rem;
+  height: 2.2rem;
+  padding-left: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+}
+
+#cardrow {
+  grid-column: 1/-1;
 
   input {
-    margin-bottom: .5rem;
-    height: 2.2rem;
-    border: none;
-    border-radius: 5px;
-    width: 300px;
+    width: 80%;
   }
+}
 
-  #cardrow {
-    grid-column: 1/-1;
+fieldset {
+  border-radius: 4px;
+  border-width: 1px;
+}
 
-    input {
-      width: 80%;
-    }
+legend {
+  margin-bottom: 0.5rem;
+}
+
+.costs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  b {
+    background-color: white;
+    padding: 0.1rem;
+    font-size: 16px;
+    border-radius: 3px;
   }
+}
 
-  fieldset {
-    border-radius: 4px;
-    border-width: 1px;
-  }
-
-  legend {
-    margin-bottom: .5rem;
-  }
-
-  .costs {
-    display: flex;
-    flex-direction: column;
-    gap: .3rem;
-
-    b {
-      background-color: white;
-      padding: .1rem;
-      font-size: 16px;
-      border-radius: 3px;
-    }
-  }
-
-  #checkoutbtn {
-    background-color: var(--dark-grey);
-    padding: .8rem .5rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 5px;
-  }
+#checkoutbtn {
+  background-color: var(--dark-grey);
+  padding: 0.8rem 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 /* End of Checkout Form */
@@ -401,7 +401,6 @@ button {
   transform: rotate(45deg);
 }
 
-
 /* add to wishlist */
 
 /* Start cart list card styles */
@@ -486,16 +485,19 @@ li:has(.removeFromCart:hover) {
 
 /* Position the quantity at the top right. */
 .cart-card__quantity {
-  grid-column: 3;
+  grid-column: 4;
   grid-row: 1;
-  text-align: right;
+  text-align: center;
 }
 
 /* Position the price below the quantity. */
 .cart-card__price {
-  grid-column: 3;
-  grid-row: 2;
-  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 5;
+  grid-row: 1/3;
+  text-align: center;
   font-weight: bold;
 }
 
@@ -508,9 +510,8 @@ li:has(.removeFromCart:hover) {
 /* End cart list card styles */
 
 @media screen and (min-width: 500px) {
-  body {
-    max-width: 1080px;
-    margin: auto;
+  main {
+    margin: 0 20px;
   }
 
   .mission {
@@ -521,12 +522,18 @@ li:has(.removeFromCart:hover) {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+  text-align: center;
 }
 
 .hide {
   display: none;
   text-align: right;
   margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.hide a {
+  text-decoration: none;
 }
 
 .product-categories {
@@ -552,6 +559,22 @@ footer {
 
 .product-categories p {
   text-align: center;
+}
+
+.cart-cart_qty-infor {
+  display: flex;
+  margin-left: -2em;
+}
+
+.cart-cart_qty-infor > button {
+  width: 20px;
+}
+
+.qty-infor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
 }
 
 /* Adjust shopping cart layout for small screens. */
@@ -589,8 +612,6 @@ footer {
   }
 }
 
-
-
 /* Breadcrumb navigation */
 .breadcrumbs {
   padding: 0.75rem 1rem;
@@ -613,7 +634,7 @@ footer {
   gap: 0.5rem;
 }
 
-.breadcrumbs li+li::before {
+.breadcrumbs li + li::before {
   content: "›";
   color: hsl(0, 0%, 40%);
 }
@@ -686,6 +707,100 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
+  .quick-view-content {
+    grid-template-columns: 1fr;
+  }
+
+  .breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumbs li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .breadcrumbs li + li::before {
+    content: "›";
+    color: #666;
+  }
+
+  .breadcrumbs a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .breadcrumbs a:hover {
+    color: #a04b16;
+  }
+
+  .breadcrumbs [aria-current="page"] {
+    font-weight: 600;
+  }
+}
+
+/* Quick View modal */
+.quick-view-modal {
+  position: fixed;
+  width: min(90%, 700px);
+  max-height: 85vh;
+  padding: 2rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 8px;
+  margin: auto;
+  overflow-y: auto;
+}
+
+.quick-view-modal::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.quick-view-close {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--dark-grey);
+  border-radius: 4px;
+  background-color: var(--dark-grey);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.quick-view-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.quick-view-content img {
+  width: 100%;
+  height: auto;
+}
+
+.quick-view-details h2,
+.quick-view-details h3,
+.quick-view-details p {
+  margin: 0.5rem 0;
+}
+
+.quick-view-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+@media screen and(max-width: 600px) {
   .quick-view-content {
     grid-template-columns: 1fr;
   }
