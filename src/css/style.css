@@ -587,8 +587,9 @@ footer {
     grid-row: 4;
     text-align: left;
   }
+}
 
- 
+
 
 /* Breadcrumb navigation */
 .breadcrumbs {
@@ -614,7 +615,7 @@ footer {
 
 .breadcrumbs li+li::before {
   content: "›";
-  color: #666;
+  color: hsl(0, 0%, 40%);
 }
 
 .breadcrumbs a {
