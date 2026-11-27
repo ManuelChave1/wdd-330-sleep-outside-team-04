@@ -9,8 +9,7 @@ const productsID = getParam("product");
 const ProductDetail = new ProductDetails(productsID, dataSource);
 
 ProductDetail.init().then((product) => {
-  const categoryName = product.Category
-    .split("-")
+  const categoryName = product.Category.split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 

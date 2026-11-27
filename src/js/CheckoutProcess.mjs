@@ -1,18 +1,25 @@
 
 import ExternalServices from "./ExternalServices.mjs";
 
-function formDataToJSON(formElement) {
-    const formData = new FormData(formElement);
+function formDataToJSON(formData) {
+    // const formData = new FormData(formElement);
 
-    const data = {};
+    // const data = {};
+
+    // formData.forEach((value, key) => {
+
+    //     data[key] = value;
+
+    // });
+
+    // return data;
+    const json = {};
 
     formData.forEach((value, key) => {
-
-        data[key] = value;
-
+        json[key] = value;
     });
 
-    return data;
+    return json;
 }
 
 export default class CheckoutProcess {

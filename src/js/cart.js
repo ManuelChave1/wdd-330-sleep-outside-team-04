@@ -1,4 +1,8 @@
-import { getLocalStorage, loadHeaderFooter, cartCount } from "./utils.mjs";
+import {
+  getLocalStorage,
+  loadHeaderFooter,
+  removeFromCartWishlist,
+} from "./utils.mjs";
 
 loadHeaderFooter();
 function renderCartContents() {
@@ -18,10 +22,12 @@ function renderCartContents() {
   if (cartItems.length > 0) {
     document.querySelector(".hide").style.display = "block";
     const total = cartItems.reduce(
-      (sum, item) => sum + Number(item.FinalPrice) * (item.quantity || 1), 0,);
+      (sum, item) => sum + Number(item.FinalPrice) * (item.quantity || 1),
+      0,
+    );
 
     document.querySelector(".cart-total").textContent =
-    `Total Price: $${total.toFixed(2)}`;
+      `Total Price: $${total.toFixed(2)}`;
   }
 }
 
@@ -67,17 +73,11 @@ renderCartContents();
 
 //add evet listener to every buton in the .product_list
 document.querySelector(".product-list").addEventListener("click", (event) => {
-  //sets the button to any clicked .removefromcart clas
-  const button = event.target.closest(".removeFromCart");
-  if (!button) return;
-  //get the position of the btn
-  const index = Number(button.dataset.index);
-  const cartItems = getLocalStorage("so-cart") || [];
-  //remove the item in the list using the position of the btn
-  cartItems.splice(index, 1);
-  // set the new cart after removing the delete item
-  localStorage.setItem("so-cart", JSON.stringify(cartItems));
-  // rerender the cart for fresh results
-  renderCartContents();
-  cartCount();
+  removeFromCartWishlist(
+    event,
+    ".removeFromCart",
+    "so-cart",
+    renderCartContents,
+    ".cartCount",
+  );
 });
