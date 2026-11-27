@@ -1,4 +1,8 @@
-import { getLocalStorage, loadHeaderFooter, removeFromCartWishlist } from "./utils.mjs";
+import {
+  getLocalStorage,
+  loadHeaderFooter,
+  removeFromCartWishlist,
+} from "./utils.mjs";
 
 loadHeaderFooter();
 function renderCartContents() {
@@ -29,21 +33,16 @@ function renderCartContents() {
   const cartCards = document.querySelectorAll(".cart-card");
 
   function updateCartTotal() {
-
     const total = cartItems.reduce((sum, item) => {
-
-
       const quantity = item.quantity ?? 1;
 
-      return sum + (item.FinalPrice * quantity);
-
+      return sum + item.FinalPrice * quantity;
     }, 0);
 
     document.querySelector(".cart-total").textContent = total.toFixed(2);
   }
 
   cartCards.forEach((card, index) => {
-
     const item = cartItems[index];
     let quantity = item.quantity ?? 1;
     // let quantity = cartItems.find(item => item.quantity) || 1
@@ -55,7 +54,6 @@ function renderCartContents() {
     const priceInfor = card.querySelector(".cart-card__price");
 
     btnQtyAdd.addEventListener("click", () => {
-
       quantity++;
 
       item.quantity = quantity;
@@ -63,15 +61,12 @@ function renderCartContents() {
       qtyInfor.textContent = item.quantity;
 
       priceInfor.textContent = item.FinalPrice.toFixed(2) * quantity;
-      saveCart()
-      updateCartTotal()
-
+      saveCart();
+      updateCartTotal();
     });
 
     btnQtydecrease.addEventListener("click", () => {
-
       if (quantity > 1) {
-
         quantity--;
 
         item.quantity = quantity;
@@ -79,21 +74,17 @@ function renderCartContents() {
         qtyInfor.textContent = item.quantity;
 
         priceInfor.textContent = item.FinalPrice.toFixed(2) * quantity;
-        saveCart()
-        updateCartTotal()
-
+        saveCart();
+        updateCartTotal();
       }
-
     });
-
   });
-  updateCartTotal()
+  updateCartTotal();
 
   function saveCart() {
     localStorage.setItem("so-cart", JSON.stringify(cartItems));
   }
 }
-
 
 function cartItemTemplate(item, index) {
   // Convert the saved image path to a root-relative URL.
@@ -150,4 +141,3 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
     ".cartCount",
   );
 });
-

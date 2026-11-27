@@ -1,103 +1,110 @@
 <!doctype html>
 
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Checkout</title>
 
-  <title>Sleep Outside | Checkout</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/checkout.js"></script>
+  </head>
 
-  <link rel="stylesheet" href="../css/style.css" />
-  <script type="module" src="../js/main.js"></script>
-  <script type="module" src="../js/checkout.js"></script>
+  <body>
+    <header class="divider" id="header">
+      <!-- template -->
+    </header>
 
+    <main class="divider">
+      <form action="" class="checkout-form">
+        <h1>Checkout</h1>
+        <fieldset class="form-row">
+          <legend>Customer Name</legend>
 
-</head>
+          <span class="inputField">
+            <label for="fname">First Name*</label>
+            <input type="text" name="fname" id="firstName" required />
+          </span>
 
-<body>
-  <header class="divider" id="header">
-    <!-- template -->
-  </header>
+          <span class="inputField">
+            <label for="lname">Last Name*</label>
+            <input type="text" name="lname" id="lastName" required />
+          </span>
+        </fieldset>
 
-  <main class="divider">
-    <form action="" class="checkout-form">
-      <h1>Checkout </h1>
-      <fieldset class="form-row">
-        <legend>Customer Name</legend>
+        <fieldset class="form-row">
+          <legend>Address</legend>
 
-        <span class="inputField">
-          <label for="fname">First Name*</label>
-          <input type="text" name="fname" id="firstName" required>
-        </span>
+          <span class="inputField">
+            <label for="street">Street Address:</label>
+            <input type="text" name="street" id="address" required />
 
-        <span class="inputField">
-          <label for="lname">Last Name*</label>
-          <input type="text" name="lname" id="lastName" required>
-        </span>
+            <label for="city">City:</label>
+            <input type="text" name="city" id="city" required />
+          </span>
 
-      </fieldset>
+          <span class="inputField">
+            <label for="state">State:</label>
+            <input type="text" name="state" id="state" required />
 
-      <fieldset class="form-row">
-        <legend>Address</legend>
+            <label for="zip">Zip Code:</label>
+            <input type="text" name="zip" id="zip" required />
+          </span>
+        </fieldset>
 
-        <span class="inputField">
+        <fieldset class="form-row">
+          <legend>Credit Card Information</legend>
+          <span class="inputField" id="cardrow">
+            <label for="cardNumber">Credit Card Number:</label>
+            <input
+              type="text"
+              name="cardNumber"
+              id="cardNumber"
+              placeholder="1234123412341234"
+              value="1234123412341234"
+              required
+            />
+          </span>
 
-          <label for="street">Street Address:</label>
-          <input type="text" name="street" id="address" required>
+          <span class="inputField">
+            <label for="expiration">Expiration Date:</label>
+            <input
+              type="text"
+              name="expiration"
+              id="expDate"
+              value="8/27"
+              required
+            />
+          </span>
+          <span class="inputField">
+            <label for="code">Security Code</label>
+            <input
+              type="number"
+              name="code"
+              id="securityCode"
+              value="123"
+              required
+            />
+          </span>
+        </fieldset>
 
-          <label for="city">City:</label>
-          <input type="text" name="city" id="city" required>
-        </span>
+        <div class="costs">
+          <!-- placeholders -->
+          <span>SubTotal: <b id="subTotal"></b></span>
+          <span>Tax: <b id="tax"> </b></span>
+          <span>Shipping <b id="shipping"></b></span>
+          <span>Total : <b id="total"></b></span>
+        </div>
 
-        <span class="inputField">
+        <button id="checkoutbtn" type="submit">Proceed to Checkout</button>
+      </form>
+    </main>
 
-          <label for="state">State:</label>
-          <input type="text" name="state" id="state" required>
-
-          <label for="zip">Zip Code:</label>
-          <input type="text" name="zip" id="zip" required>
-        </span>
-      </fieldset>
-
-      <fieldset class="form-row">
-        <legend>Credit Card Information</legend>
-        <span class="inputField" id="cardrow">
-
-          <label for="cardNumber">Credit Card Number:</label>
-          <input type="text" name="cardNumber" id="cardNumber" placeholder="1234123412341234" value="1234123412341234"
-            required>
-        </span>
-
-        <span class="inputField">
-
-          <label for="expiration">Expiration Date:</label>
-          <input type="text" name="expiration" id="expDate" value="8/27" required>
-        </span>
-        <span class="inputField">
-
-          <label for="code">Security Code</label>
-          <input type="number" name="code" id="securityCode" value="123" required>
-        </span>
-
-      </fieldset>
-
-      <div class="costs">
-        <!-- placeholders -->
-        <span>SubTotal: <b id="subTotal"></b></span>
-        <span>Tax: <b id="tax"> </b></span>
-        <span>Shipping <b id="shipping"></b></span>
-        <span>Total : <b id="total"></b></span>
-      </div>
-
-      <button id="checkoutbtn" type="submit">Proceed to Checkout</button>
-    </form>
-  </main>
-
-  <footer id="footer">
-    <!-- template -->
-  </footer>
-</body>
-
+    <footer id="footer">
+      <!-- template -->
+    </footer>
+  </body>
 </html>

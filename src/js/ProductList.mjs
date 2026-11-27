@@ -1,20 +1,8 @@
 import { renderListWithTemplate, getDiscountPercentage } from "./utils.mjs";
 
 function productCardTemplate(product) {
-    // const retailPrice = Number(product.SuggestedRetailPrice);
-    // const finalPrice = Number(product.FinalPrice);
 
-    // const hasDiscount =
-    //     Number.isFinite(retailPrice) &&
-    //     Number.isFinite(finalPrice) &&
-    //     retailPrice > 0 &&
-    //     finalPrice >= 0 &&
-    //     finalPrice < retailPrice;
-
-    const discountPercentage = getDiscountPercentage(product)  // hasDiscount
-    // ? Math.round(((retailPrice - finalPrice) / retailPrice) * 100)
-    // : 0;
-
+    const discountPercentage = getDiscountPercentage(product)
     return `
     <li class="product-card"> 
     <a href="/product_pages/?product=${product.Id}">
@@ -44,40 +32,7 @@ function productCardTemplate(product) {
    </button>
     </li> `
 }
-/*
-return `
-    <li class="product-card">
-        <a href="/product_pages/?product=${product.Id}">
-            <img src="${product.Images.PrimaryMedium}" alt="${product.Name}"/>
-            <h3 class="card__brand">${product.Brand.Name}</h3>
-            <h2 class="card__name">${product.NameWithoutBrand}</h2>
-            <p class="product-card__price">$${finalPrice.toFixed(2)}</p>
-            ${hasDiscount
-        ? `
-                    <p class="product-card__original-price">
-                        Original: $${retailPrice.toFixed(2)}
-                    </p>
-                    <p class="product-card__price">
-                        You save: $${(retailPrice - finalPrice).toFixed(2)}
-                    </p>
-                    <span class="product-card__discount">
-                        ${discountPercentage}% OFF
-                    </span>
-                    `
-        : ""
-    }
-        </a>
 
-        <button
-            type="button"
-            class="quick-view-button"
-            data-product-id="${product.Id}"
-        >
-            Quick View
-        </button>
-    </li>
-    `;
-} */
 
 export default class ProductList {
     constructor(category, dataSource, listElement) {

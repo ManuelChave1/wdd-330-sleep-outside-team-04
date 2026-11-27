@@ -1,4 +1,5 @@
-import ExternalServices from "./ExternalServices.mjs"; "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
+("./ProductData.mjs");
 import ProductList from "./ProductList.mjs";
 import { getParam } from "./utils.mjs";
 import { renderCategoryBreadcrumbs } from "./Breadcrumbs.mjs";

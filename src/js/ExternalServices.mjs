@@ -1,5 +1,5 @@
 const baseURL = import.meta.env.VITE_SERVER_URL;
-const postURL = import.meta.env.VITE_SERVER_URL_POST;
+const postURL = "https://wdd330-backend-osp8.onrender.com/checkout";
 
 function convertToJson(res) {
     if (res.ok) {
@@ -32,6 +32,7 @@ export default class ExternalServices {
             body: JSON.stringify(payload)
         }
         const response = await fetch(postURL, options)
+        // console.log("IM the response", response)
         return await convertToJson(response)
 
     }
