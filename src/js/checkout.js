@@ -19,7 +19,5 @@ const form = document.querySelector(".checkout-form");
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const response = await checkout.checkout(form);
-
-  console.log("Server response:", response);
+  await checkout.checkout(form);
 });

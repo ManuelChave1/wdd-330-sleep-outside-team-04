@@ -1,5 +1,6 @@
 
 import ExternalServices from "./ExternalServices.mjs";
+import { alertMessage } from "./utils.mjs";
 
 function formDataToJSON(formElement) {
     const formData = new FormData(formElement);
@@ -64,16 +65,14 @@ export default class CheckoutProcess {
 
     packageItems(items) {
 
-        return items.map(item => {
+        return items.map(item => ({
 
-            return {
                 id: item.Id,
                 name: item.Name,
                 price: Number(item.FinalPrice),
                 quantity: Number(item.quantity) || 1
-            };
 
-        });
+        }));
 
     }
 
@@ -99,9 +98,15 @@ export default class CheckoutProcess {
 
         };
 
-        const response = await this.externalServices.checkout(order);
 
-        // console.log("Im the response", response)
-        return response;
+        try {
+            const response = await this.externalServices.checkout(order);
+            localStorage.removeItem("so-cart");
+            window.location.href = "./success.html";
+            return response;
+        } catch (error) {
+            const errorMessage = Object.values(error.message).join(", ");
+            alertMessage(errorMessage);
+        }
     }
 }

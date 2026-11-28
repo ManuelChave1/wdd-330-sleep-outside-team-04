@@ -51,7 +51,15 @@
             <input type="text" name="state" id="state" required />
 
             <label for="zip">Zip Code:</label>
-            <input type="text" name="zip" id="zip" required />
+            <input
+              type="text"
+              name="zip"
+              id="zip"
+              required
+              maxlength="5"
+              pattern="[0-9]{5}"
+              title="Enter exactly 5 digits"
+            />
           </span>
         </fieldset>
 
@@ -64,7 +72,9 @@
               name="cardNumber"
               id="cardNumber"
               placeholder="1234123412341234"
-              value="1234123412341234"
+              maxlength="16"
+              pattern="[0-9]{16}"
+              title="Enter exactly 16 digits"
               required
             />
           </span>
