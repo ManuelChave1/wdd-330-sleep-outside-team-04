@@ -146,3 +146,27 @@ export function removeFromCartWishlist(event, targetBtn, localStorageKey, render
   renderFn();
   wishlistCartCounter(localStorageKey, counterTemplate);
 };
+
+export function alertMessage(message, scroll = true) {
+  const alert = document.createElement("div");
+  alert.classList.add("alert");
+
+  const messageElement = document.createElement("p");
+  messageElement.textContent = message;
+
+  alert.appendChild(messageElement);
+
+  const deleteButton = document.createElement ("button");
+  deleteButton.textContent = "X";
+  alert.appendChild(deleteButton);
+
+  deleteButton.addEventListener ("click", () => {
+    alert.remove();
+  });
+
+  const main = document.querySelector("main");
+  
+  if (main) {
+    main.prepend(alert);
+  }
+}
