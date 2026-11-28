@@ -17,6 +17,27 @@ export class ProductDetails {
     }
 }
 
+function animateCartIcon() {
+    const cartIcon = document.querySelector(".cart-icon");
+
+    if (cartIcon) {
+        cartIcon.animate(
+            [
+                { transform: "translateY(0) rotate(0deg)" },
+                { transform: "translateY(-6px) rotate(-5deg)" },
+                { transform: "translateY(0) rotate(0deg)" },
+                { transform: "translateY(-3px) rotate(5deg)" },
+                { transform: "translateY(0) rotate(0deg)" }
+            ],
+            {
+                duration: 600,
+                easing: "ease",
+                iterations: 1
+            }
+        );
+    }
+}
+
 export function addProductToCart(product) {
     // Retrieve existing cart items or start with an empty array.
     const cartItems = getLocalStorage("so-cart") || [];
@@ -34,7 +55,9 @@ export function addProductToCart(product) {
     }
     // Save the updated cart array to localStorage.
     setLocalStorage("so-cart", cartItems);
-    loadHeaderFooter();
+
+    animateCartIcon();
+
 }
 
 
